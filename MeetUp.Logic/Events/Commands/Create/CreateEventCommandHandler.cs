@@ -15,6 +15,7 @@ namespace MeetUp.Logic.Events.Commands.Create
             var eventD = new MeetupEventModel
             {
                 Id = Guid.NewGuid(),
+                AuthorId = request.AuthorId,
                 Title = request.Title,
                 Topic = request.Topic,
                 Description = request.Description,

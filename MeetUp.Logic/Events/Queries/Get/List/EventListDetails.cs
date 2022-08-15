@@ -13,7 +13,7 @@ namespace MeetUp.Logic.Events.Queries.Get.List
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<MeetupEventModel, EventDetails>().ForMember(eventD => eventD.Id, opt => opt.MapFrom(eventO => eventO.Id))
+            profile.CreateMap<MeetupEventModel, EventListDetails>().ForMember(eventD => eventD.Id, opt => opt.MapFrom(eventO => eventO.Id))
             .ForMember(eventD => eventD.Title, opt => opt.MapFrom(eventO => eventO.Title))
             .ForMember(eventD => eventD.Topic, opt => opt.MapFrom(eventO => eventO.Topic))
             .ForMember(eventD => eventD.Speakers, opt => opt.MapFrom(eventO => eventO.Speakers));

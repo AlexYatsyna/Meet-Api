@@ -14,7 +14,7 @@ namespace MeetUp.Logic.Events.Commands.Update
         {
             var eventU = await dbContext.Events.FirstOrDefaultAsync(ev => ev.Id == request.Id, cancellationToken);
 
-            if (eventU == null)
+            if (eventU == null || eventU.AuthorId != request.AuthorId)
             {
                 throw new Exception();
             }
