@@ -1,9 +1,4 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MeetUp.Logic.Events.Commands.Update
 {
@@ -11,8 +6,8 @@ namespace MeetUp.Logic.Events.Commands.Update
     {
         public UpdateEventCommandValidator()
         {
-            RuleFor(updateEventCommand => updateEventCommand.Id).NotEqual(Guid.Empty);
-            RuleFor(updateEventCommand => updateEventCommand.AuthorId).NotEqual(Guid.Empty);
+            RuleFor(updateEventCommand => updateEventCommand.Id).NotEmpty().NotEqual(Guid.Empty);
+            RuleFor(updateEventCommand => updateEventCommand.AuthorId).NotEmpty().NotEqual(Guid.Empty);
             RuleFor(updateEventCommand => updateEventCommand.Title).NotEmpty().MaximumLength(25);
             RuleFor(updateEventCommand => updateEventCommand.Topic).NotEmpty().MaximumLength(30);
             RuleFor(updateEventCommand => updateEventCommand.Description).NotEmpty().MaximumLength(255);

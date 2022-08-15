@@ -13,7 +13,7 @@ namespace MeetUp.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class EventController : BaseController
+    public class EventController : Controller
     {
 
         private readonly IMapper mapper;

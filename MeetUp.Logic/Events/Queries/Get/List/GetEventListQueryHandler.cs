@@ -28,7 +28,7 @@ namespace MeetUp.Logic.Events.Queries.Get.List
             else
                 events = await dbContext.Events.AsQueryable().ProjectTo<EventListDetails>(mapper.ConfigurationProvider)
                                  .ToListAsync(cancellationToken);
-            
+
 
             return new EventList { Events = events };
         }
