@@ -7,7 +7,7 @@ namespace MeetUp.Logic.Events.Commands.Delete
         public DeleteEventCommandValidator()
         {
             RuleFor(deleteEventCommand => deleteEventCommand.Id).NotEmpty().NotEqual(Guid.Empty);
-            RuleFor(deleteEventCommand => deleteEventCommand.AuthorID).NotEmpty().NotEqual(Guid.Empty);
+            //RuleFor(deleteEventCommand => deleteEventCommand.AuthorID).NotEmpty();//.NotEqual(Guid.Empty);
         }
     }
 }

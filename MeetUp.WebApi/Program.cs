@@ -2,6 +2,7 @@ using MeetUp.Infrastructure;
 using MeetUp.Logic;
 using MeetUp.Logic.Interfaces;
 using MeetUp.Logic.Mapping;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -59,15 +60,38 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
             policy.AllowAnyOrigin();
         });
     });
+    services.AddAuthentication(conf =>
+    {
+        conf.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        conf.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    }).AddJwtBearer("Bearer", opt =>
+    {
+        opt.Authority = "http://localhost:2387";
+        opt.Audience = "MeetUpWebApi";
+        opt.RequireHttpsMetadata = false;
+    });
+    services.AddSwaggerGen(conf =>
+    {
+        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        conf.IncludeXmlComments(xmlPath);
+    });
 }
 
 void ConfigureMiddleWare(WebApplication app)
 {
     app.UseHttpsRedirection();
     app.UseStaticFiles();
-
+    app.UseSwagger();
+    app.UseSwaggerUI(conf =>
+    {
+        conf.RoutePrefix = "";
+        conf.SwaggerEndpoint("swagger/v1/swagger.json", "MeetUp Web Api");
+    });
     app.UseRouting();
     app.UseCors("AllowAll");
+    app.UseAuthentication();
+    app.UseAuthorization(); 
     app.MapControllers();
 
     app.MapRazorPages();

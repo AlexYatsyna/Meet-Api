@@ -11,7 +11,6 @@ namespace MeetUp.Infrastructure
 
         public EventDbContext(DbContextOptions<EventDbContext> options) : base(options)
         {
-            Console.WriteLine();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

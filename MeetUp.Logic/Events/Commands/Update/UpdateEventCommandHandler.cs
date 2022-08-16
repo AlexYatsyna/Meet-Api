@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MeetUp.Logic.Events.Commands.Update
 {
-    public class UpdateEventCommandHandler : IRequest<UpdateEventCommand>
+    public class UpdateEventCommandHandler : IRequestHandler<UpdateEventCommand>
     {
         private readonly IEventDbContext dbContext;
 
@@ -14,7 +14,7 @@ namespace MeetUp.Logic.Events.Commands.Update
         {
             var eventU = await dbContext.Events.FirstOrDefaultAsync(ev => ev.Id == request.Id, cancellationToken);
 
-            if (eventU == null || eventU.AuthorId != request.AuthorId)
+            if (eventU == null /*|| eventU.AuthorId != request.AuthorId*/)
             {
                 throw new Exception();
             }

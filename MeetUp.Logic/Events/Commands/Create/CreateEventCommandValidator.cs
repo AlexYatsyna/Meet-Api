@@ -6,7 +6,7 @@ namespace MeetUp.Logic.Events.Commands.Create
     {
         public CreateEventCommandValidator()
         {
-            RuleFor(createEventCommand => createEventCommand.AuthorId).NotEmpty().NotEqual(Guid.Empty);
+            //RuleFor(createEventCommand => createEventCommand.AuthorId).NotEmpty();//.NotEqual(Guid.Empty);
             RuleFor(createEventCommand => createEventCommand.Title).NotEmpty().MaximumLength(25);
             RuleFor(createEventCommand => createEventCommand.Topic).NotEmpty().MaximumLength(30);
             RuleFor(createEventCommand => createEventCommand.Description).NotEmpty().MaximumLength(255);

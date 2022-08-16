@@ -13,7 +13,7 @@ namespace MeetUp.Logic.Events.Commands.Delete
         {
             var eventD = await dbContext.Events.FindAsync(new object[] { request.Id }, cancellationToken);
 
-            if (eventD == null || eventD.AuthorId != request.AuthorID)
+            if (eventD == null /*|| eventD.AuthorId != request.AuthorID*/)
             {
                 throw new Exception();
             }
