@@ -10,7 +10,7 @@ namespace MeetUp.Identity.DB.EntityConfigurations
         {
             builder.HasKey(us => us.Id);
 
-            
+
         }
     }
 }

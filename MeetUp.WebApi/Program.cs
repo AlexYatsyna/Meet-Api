@@ -91,7 +91,7 @@ void ConfigureMiddleWare(WebApplication app)
     app.UseRouting();
     app.UseCors("AllowAll");
     app.UseAuthentication();
-    app.UseAuthorization(); 
+    app.UseAuthorization();
     app.MapControllers();
 
     app.MapRazorPages();

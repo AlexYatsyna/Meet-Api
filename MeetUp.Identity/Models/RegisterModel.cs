@@ -17,6 +17,6 @@ namespace MeetUp.Identity.Models
         [DataType(DataType.Password)]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
-        
+
     }
 }

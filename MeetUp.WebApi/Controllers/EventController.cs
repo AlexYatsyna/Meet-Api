@@ -6,7 +6,6 @@ using MeetUp.Logic.Events.Commands.Update;
 using MeetUp.Logic.Events.Queries.Get;
 using MeetUp.Logic.Events.Queries.Get.List;
 using MeetUp.WebApi.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 

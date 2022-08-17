@@ -1,10 +1,8 @@
-using IdentityServer4.Models;
 using MeetUp.Identity;
 using MeetUp.Identity.DB;
 using MeetUp.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +26,7 @@ using (var scope = app.Services.CreateScope())
     {
         var context = serviceProvider.GetRequiredService<AuthDbContext>();
         DbInitializer.Initialize(context);
-    } 
+    }
     catch (Exception ex)
     {
         Console.WriteLine(ex);
@@ -46,7 +44,7 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
 
     services.AddControllersWithViews();
     services.AddDbContext<AuthDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("connectionString1")));
-    
+
     services.AddIdentity<AppUser, IdentityRole>(conf =>
     {
         conf.Password.RequiredLength = 8;
@@ -61,7 +59,7 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
         .AddInMemoryApiScopes(Configuration.ApiScopes)
         .AddInMemoryClients(Configuration.Clients)
         .AddDeveloperSigningCredential();
-    
+
 
     services.ConfigureApplicationCookie(conf =>
     {

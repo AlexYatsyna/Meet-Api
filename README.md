@@ -30,12 +30,17 @@
 - ### The *MeetUp.WebApi* project is responsible for the UI
 - ### The *MeetUp.Identity* project is Authentication Server
 
+As mentioned above, the **`MeetUp.Data`** project is responsible for describing the entities, and the **`MeetUp.Logic`** project is responsible for the logic of the Get,Post,Put,Delete requests and their validation. They make up the first layer of our project. **`MeetUp.Infrastructure`** is the second layer, which is responsible for database initialization, database context, etc. **`MeetUp.WebApi`** is a UI that uses Swagger to test WebApi and is the third layer.
+
 #  Getting Started
 
-## 1. Git clone
-## 2. Install MS Sql Server
-## 3. Configure 'appsettings.json' files (DbConnection string)
-## 4. Start *MeetUp.WebApi* 
+### 1. Git clone
+### 2. Install MS Sql Server
+### 3. Configure 'appsettings.json' files (DbConnection string)
+### 4. Start *MeetUp.WebApi* 
 
      p.s You can use *MeetUp.Identity* Server to add authorization
+
+
+
 

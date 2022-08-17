@@ -31,10 +31,10 @@ namespace MeetUp.Identity.Controllers
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
             if (!ModelState.IsValid)
-                return View(loginModel); 
+                return View(loginModel);
 
             var user = await userManager.FindByNameAsync(loginModel.Username);
-            
+
             if (user == null)
             {
                 ModelState.AddModelError(String.Empty, "User not found");
@@ -54,7 +54,7 @@ namespace MeetUp.Identity.Controllers
         {
             var registerModel = new RegisterModel
             {
-                
+
             };
             return View(registerModel);
         }
@@ -87,7 +87,7 @@ namespace MeetUp.Identity.Controllers
         public async Task<IActionResult> Logout(string logoutId)
         {
             await signInManager.SignOutAsync();
-            var logoutReq =  await interactionService.GetLogoutContextAsync(logoutId);
+            var logoutReq = await interactionService.GetLogoutContextAsync(logoutId);
             return Redirect(logoutReq.PostLogoutRedirectUri);
         }
     }
